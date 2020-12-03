@@ -1,0 +1,12 @@
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 10rem;
+}
+
+#main-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

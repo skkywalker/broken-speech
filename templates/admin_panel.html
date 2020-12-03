@@ -1,0 +1,14 @@
+<!doctype html>
+
+<html lang="en">
+{% include 'includes/head.html' %}
+<body>
+    <p>Refresh the page to update the list</p>
+    <ul>
+        {% for player in users %}
+        <li>{{users[player]['name']}}  </li>
+        {% endfor %}
+    </ul>
+    <a href="/start" class="button">Start</a>
+</body>
+</html>

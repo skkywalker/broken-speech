@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en">
+{% include 'includes/head.html' %}
+<body>
+  <h3>Create Room</h3>
+    <form action="/create" method="GET">
+        <fieldset>
+          <label for="name">Name</label>
+          <input type="text" placeholder="Name" id="name" name="name">
+          <input class="button-primary" type="submit" value="Create Room">
+        </fieldset>
+    </form>
+  <hr />
+  <h3>Join Room</h3>
+    <form action="/join" method="GET">
+        <fieldset>
+          <label for="name">Name</label>
+          <input type="text" placeholder="Name" id="name" name="name">
+          <label for="roomID">Room ID</label>
+          <input type="text" placeholder="Room ID" id="roomID" name="roomID">
+          <input class="button-primary" type="submit" value="Join Room">
+        </fieldset>
+    </form>
+</body>
+</html>
