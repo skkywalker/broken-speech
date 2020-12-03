@@ -57,11 +57,24 @@ window.onload = function () {
     var saveButton = document.getElementById('save');
 
     saveButton.addEventListener('click', function() {
-        var imageName = prompt('Please enter image name');
         var canvasDataURL = canvas.toDataURL();
-        var a = document.createElement('a');
-        a.href = canvasDataURL;
-        a.download = imageName || 'drawing';
-        a.click();
+        console.log(canvasDataURL)
+        $.ajax({
+            type: "POST",
+            url: "/upload",
+            data: canvasDataURL,
+            success: function(data) {
+              if (data.success) {
+                alert('Your file was successfully uploaded!');
+              } else {
+                alert('There was an error uploading your file!');
+              }
+            },
+            error: function(data) {
+              alert('There was an error uploading your file!');
+            }
+          }).done(function() {
+            console.log("Sent");
+          });
     });
 };

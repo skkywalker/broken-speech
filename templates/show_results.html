@@ -1,0 +1,16 @@
+<!doctype html>
+
+<html lang="en">
+{% include 'includes/head.html' %}
+<body>
+    <h3>Results</h3>
+    <ul>
+        {% for player in room['players'] %}
+        <li>
+            <p>{{room['players'][player]['name']}}</p>
+            <img src="/static/images/{{room_id}}-{{room['players'][player]['name']}}.png">
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
