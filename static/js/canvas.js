@@ -64,17 +64,8 @@ window.onload = function () {
             url: "/upload",
             data: canvasDataURL,
             success: function(data) {
-              if (data.success) {
-                alert('Your file was successfully uploaded!');
-              } else {
-                alert('There was an error uploading your file!');
-              }
-            },
-            error: function(data) {
-              alert('There was an error uploading your file!');
+              window.location.href = "/results";
             }
-          }).done(function() {
-            console.log("Sent");
           });
     });
 };

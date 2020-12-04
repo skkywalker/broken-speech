@@ -3,7 +3,6 @@ from flask import Flask, session, render_template, request, redirect
 from PIL import Image
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-import numpy as np
 
 app = Flask(__name__)
 app.DEBUG = True
