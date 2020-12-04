@@ -30,7 +30,7 @@ def home():
 
 @app.route('/create')
 def create():
-    room_id = random.randint(100000,199999)
+    room_id = random.randint(100000,999999)
     session['uid'] = os.urandom(32)
     session['name'] = request.args.get('name')
     session['room_id'] = room_id
@@ -86,10 +86,13 @@ def upload():
     data = request.form
     for d in data:
         received = d
-    encoded_data = received.split(',')[1]
-    encoded_data += "="*(4-len(encoded_data)%4)
-    decoded = base64.b64decode(encoded_data)
-    img = Image.open(io.BytesIO(decoded))
+
+    received = received.split(',')[1] + '='
+    missing_pad = len(received)%4
+    if missing_pad:
+        received += ('=' * (4-missing_pad))
+    received = received.replace(' ', '+')
+    img = Image.open(io.BytesIO(base64.b64decode(received)))
     img.save(f"static/images/{session['room_id']}-{session['name']}.png", "PNG")
     rooms[room_id]['players'][get_uindex(room_id, uid)]['uploaded'] = True
     return redirect('/results')

@@ -4,11 +4,11 @@
 {% include 'includes/head.html' %}
 <body>
     <h3>Results</h3>
-    <ul>
+    <ul style="list-style: none;">
         {% for player in room['players'] %}
         <li>
-            <p>{{room['players'][player]['name']}}</p>
-            <img src="/static/images/{{room_id}}-{{room['players'][player]['name']}}.png">
+            <h3>{{room['players'][player]['name']}}</h3>
+            <img style="border: 1px solid black;" src="/static/images/{{room_id}}-{{room['players'][player]['name']}}.png">
         </li>
         {% endfor %}
     </ul>
