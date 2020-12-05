@@ -6,7 +6,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 app = Flask(__name__)
 app.DEBUG = True
-app.config['SECRET_KEY'] = os.urandom(32)
+app.config['SECRET_KEY'] = 'notveryseCretKey'
 
 rooms = {}
 
