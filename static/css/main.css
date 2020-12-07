@@ -10,3 +10,54 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+/*client chat */ 
+
+#log {
+    background-color: rgb(255, 255, 255);
+    width: auto;
+    margin: 5rem auto;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5px;
+  }
+  
+  .chat-wrapper {
+    padding: 10px;
+  }
+  
+  .chat-wrapper form {
+    display: flex;
+    margin: 0;
+  }
+ 
+  #events {
+    height: 150px;
+  }
+  
+  #log input {
+    outline: none;
+    font-size: 15px;
+    padding: 0 5px;
+  }
+
+  #log ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    overflow-y: scroll;
+  }
+  
+  #log li {
+    padding: 0 10px 0 10px;
+  }
+
+  #chat{
+      margin: auto;
+      margin-right: 5px;
+  }
+
+  #chat-form button{
+      margin: auto;
+  }
+  

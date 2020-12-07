@@ -2,13 +2,25 @@
 
 <html lang="en">
 {% include 'includes/head.html' %}
-<body>
-    <h3>Room ID: {{room_id}}</h3>
-    <p>Refresh the page to update the list</p>
-    <ul>
-        {% for player in users %}
-        <li>{{users[player]['name']}}  </li>
-        {% endfor %}
-    </ul>
-</body>
+    <body>
+        <h3>Room ID: {{room_id}}</h3>
+        <p>Refresh the page to update the list</p>
+        <ul>
+            {% for player in users %}
+            <li>{{users[player]['name']}}  </li>
+            {% endfor %}
+        </ul>
+        <div id="log" class="controls-wrapper">
+            <ul id="events"></ul>
+            <div class="controls">
+                <div class="chat-wrapper">
+                    <form id="chat-form">
+                        <input id="chat"/>
+                        <button id="say">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="/static/js/client.js"></script>
+    </body>
 </html>
