@@ -13,7 +13,7 @@ body {
 
 /*client chat */ 
 
-#log {
+.log {
     background-color: rgb(255, 255, 255);
     width: auto;
     margin: 5rem auto;
@@ -30,17 +30,17 @@ body {
     margin: 0;
   }
  
-  #events {
+  .events {
     height: 150px;
   }
   
-  #log input {
+  .log input {
     outline: none;
     font-size: 15px;
     padding: 0 5px;
   }
 
-  #log ul {
+  .log ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -48,16 +48,16 @@ body {
     overflow-y: scroll;
   }
   
-  #log li {
+  .log li {
     padding: 0 10px 0 10px;
   }
 
-  #chat{
+  .chat{
       margin: auto;
       margin-right: 5px;
   }
 
-  #chat-form button{
+  .chat-form button{
       margin: auto;
   }
   

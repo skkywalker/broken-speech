@@ -1,27 +1,22 @@
-const log = (message) => {
-    const parent = document.querySelector('#events');
-    const el = document.createElement('li');
-    el.innerHTML = message;
+$(document).ready(function() {
 
-    parent.appendChild(el);
-    parent.scrollTop = parent.scrollHeight;
-}
+	//conecta ao server
+	var socket = io.connect('http://127.0.0.1:5000');
 
-const onChatSubmitted = (e) => {
-    e.preventDefault();
+	//envia uma mensagem ao servidor
+	socket.on('connect', function() {
+		socket.send('User has connected!');
+	});
 
-    const input = document.querySelector('#chat');
-    const message = input.value;
-    input.value = '';
-    
-    log(message);
-};
+	//adiciona o conteúdo à lista de mensagens
+	socket.on('message', function(msg) {
+		$(".events").append('<li>'+msg+'</li>');
+	});
 
-(() => {
-    log('welcome');
+	//quando o botão é clicado, envia a mensagem
+	$('.send').on('click', function() {
+		socket.send($('.chat').val());
+		$('.chat').val('');
+	});
 
-    document
-        .querySelector('#chat-form')
-        .addEventListener('submit', onChatSubmitted);
-
-})();
+});
