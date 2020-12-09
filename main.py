@@ -58,14 +58,14 @@ def create():
 @app.route('/control_panel')
 def control_panel():
     rooms = read_json()
-    return render_template('admin_panel.html', users=rooms[session['room_id']]['players'], room_id=session['room_id'])
+    return render_template('admin_panel.html', users=rooms[session['room_id']]['players'], room_id=session['room_id'], username=session['name'])
 
 @app.route('/player_panel')
 def player_panel():
     rooms = read_json()
     room_id = session['room_id']
     if rooms[room_id]['started'] == 0:
-        return render_template('player_panel.html', users=rooms[room_id]['players'], room_id=room_id)
+        return render_template('player_panel.html', users=rooms[room_id]['players'], room_id=room_id, username=session['name'])
     elif rooms[room_id]['started'] == 1:
         return render_template('drawing.html')
 

@@ -25,7 +25,7 @@ body {
     padding: 10px;
   }
   
-  .chat-wrapper form {
+  .chat-wrapper .chat-form {
     display: flex;
     margin: 0;
   }
