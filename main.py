@@ -1,5 +1,6 @@
 import os, random, re, base64, io, json
 from flask import Flask, session, render_template, request, redirect
+from flask_socketio import SocketIO, send
 from PIL import Image
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -7,6 +8,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 app = Flask(__name__)
 app.DEBUG = True
 app.config['SECRET_KEY'] = 'notveryseCretKey'
+socketio = SocketIO(app)
 
 def read_json():
     with open('rooms.json', 'r') as fp:
@@ -56,14 +58,14 @@ def create():
 @app.route('/control_panel')
 def control_panel():
     rooms = read_json()
-    return render_template('admin_panel.html', users=rooms[session['room_id']]['players'], room_id=session['room_id'])
+    return render_template('admin_panel.html', users=rooms[session['room_id']]['players'], room_id=session['room_id'], username=session['name'])
 
 @app.route('/player_panel')
 def player_panel():
     rooms = read_json()
     room_id = session['room_id']
     if rooms[room_id]['started'] == 0:
-        return render_template('player_panel.html', users=rooms[room_id]['players'], room_id=room_id)
+        return render_template('player_panel.html', users=rooms[room_id]['players'], room_id=room_id, username=session['name'])
     elif rooms[room_id]['started'] == 1:
         return render_template('drawing.html')
 
@@ -120,3 +122,7 @@ def results():
     if(all_sent(session['room_id'])):
         return render_template('show_results.html', room=rooms[session['room_id']], room_id=session['room_id'])
     return render_template('waiting.html')
+
+@socketio.on('message')
+def handleMessage(msg):
+    send(msg, broadcast=True)
