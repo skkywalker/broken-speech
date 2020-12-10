@@ -1,7 +1,11 @@
 body {
     max-width: 900px;
     margin: 0 auto;
-    padding-top: 10rem;
+    padding-top: 2rem;
+}
+
+#title {
+    text-align: center;
 }
 
 #main-app {
@@ -9,4 +13,41 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .drawing-board{
+    padding-left: 10px;
+    text-align: center;
+}
+
+.side_buttons button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+#eraser::before{
+    font-family: "Font Awesome 5 Free"; content: "\f12d";
+}
+
+#pencil::before{
+    font-family: "Font Awesome 5 Free"; content: "\f303";
+}
+
+#undo::before{
+    font-family: "Font Awesome 5 Free"; content: "\f0e2";
+}
+
+.buttons button {
+    font-size: 20px;
 }
