@@ -19,6 +19,13 @@ $(document).ready(function() {
     $('.send').on('click', function() {
         socket.send(user+': '+$('.chat').val());
         $('.chat').val('');
-	});
+    });
+    
+    $('.chat').on('keydown', function (e) {
+        if (e.which == 13) {
+            socket.send(user+': '+$('.chat').val());
+        $('.chat').val('');
+         }
+    });
 
 });
