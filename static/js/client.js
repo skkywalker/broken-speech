@@ -1,8 +1,9 @@
 $(document).ready(function() {
 	
-    var user = document.getElementsByClassName("chat")[0].value;
+    var user = document.getElementsByClassName('chat')[0].value;
+    document.getElementsByClassName('chat')[0].value = "";
     //conecta ao server
-    var socket = io.connect('http://127.0.0.1:5000');
+    var socket = io.connect('http://' + window.location.hostname + ':' + window.location.port);
 
     //envia uma mensagem ao servidor
     socket.on('connect', function() {
@@ -19,6 +20,5 @@ $(document).ready(function() {
         socket.send(user+': '+$('.chat').val());
         $('.chat').val('');
 	});
-	
-	user = "";
+
 });
